@@ -3,6 +3,7 @@ package tn.esprit.spring.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,18 +38,35 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
-		Employe employe = employeRepository.findById(employeId).get();
-		employe.setEmail(email);
-		employeRepository.save(employe);
+		Optional<Employe> employe = employeRepository.findById(employeId);
+		if(employe.isPresent()) {
+			Employe emp = employe.get();
+			emp.setEmail(email);
+			employeRepository.save(emp);
+			
+		}
 
 	}
 
 	@Transactional	
 	public void affecterEmployeADepartement(int employeId, int depId) {
-		Departement depManagedEntity = deptRepoistory.findById(depId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
+		Optional<Departement> depManagedEntity = deptRepoistory.findById(depId);
+		Optional<Employe> employeManagedEntity = employeRepository.findById(employeId);
+		
+		
+		if(depManagedEntity.isPresent()) {
+			Departement dep = depManagedEntity.get();
+			if(employeManagedEntity.isPresent()) {
+				List<Employe> employes = new ArrayList<>();
+				Employe emp = employeManagedEntity.get();
+				employes.add(emp);
+				dep.setEmployes(employes);	
+			}
+			
+		}
+		
 
-		if(depManagedEntity.getEmployes() == null){
+		/*if(depManagedEntity.getEmployes() == null){
 
 			List<Employe> employes = new ArrayList<>();
 			employes.add(employeManagedEntity);
@@ -57,7 +75,7 @@ public class EmployeServiceImpl implements IEmployeService {
 
 			depManagedEntity.getEmployes().add(employeManagedEntity);
 
-		}
+		}*/
 
 	}
 	@Transactional
