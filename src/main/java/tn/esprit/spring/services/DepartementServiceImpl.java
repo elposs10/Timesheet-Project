@@ -24,13 +24,13 @@ public class DepartementServiceImpl implements IDepartementService {
 
 	@Override
 	public List<Departement> getAllDepartements() {
-		// TODO Auto-generated method stub
+
 		return ((List<Departement>)deptRepoistory.findAll());
 	}
 
 	@Override
 	public void deleteEmployeById(int departementId) {
-		// TODO Auto-generated method stub
+
 		deptRepoistory.deleteById(departementId);
 		
 	}
