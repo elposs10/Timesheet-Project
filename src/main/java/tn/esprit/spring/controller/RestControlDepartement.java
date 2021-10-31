@@ -5,7 +5,6 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +34,7 @@ public class RestControlDepartement {
 		idepiseservice.ajouterDepartement(departement);
 		return departement;
 	}
-
-	@RequestMapping(name = "/test", method = RequestMethod.GET)
+	@GetMapping(path="/test")
 	@ResponseBody
 	public List<Departement> afficherDepartement(){
 		 return idepiseservice.getAllDepartements();
