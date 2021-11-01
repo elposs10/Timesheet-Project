@@ -4,21 +4,31 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 
+
+
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Departement;
-
+import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.repository.DepartementRepository;
+import tn.esprit.spring.repository.EmployeRepository;
+import tn.esprit.spring.services.EmployeServiceImpl;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,12 +40,40 @@ public class DeparmentServiceImplTest {
 	@Autowired
 	private DepartementRepository depRepo;
 	
+	
+	
+	@Mock
+	EmployeRepository employesRepository;
+	
+	@Mock
+	DepartementRepository deptRepoistory;
+	@Mock
+	EmployeServiceImpl emserv;
+
+		@Before
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
+	}
+
+
 
 	
-	
+	@Test
+	public void testaffectempDp() {
+		Departement depManagedEntity= new Departement();	
+		Mockito.when(deptRepoistory.findById(depManagedEntity.getId())).thenReturn(Optional.of(depManagedEntity));
+		deptRepoistory.save(depManagedEntity);
+		Employe employeManagedEntity= new Employe();
+		Mockito.when(employesRepository.findById(employeManagedEntity.getId())).thenReturn(Optional.of(employeManagedEntity));
+		employesRepository.save(employeManagedEntity);
+		emserv.affecterEmployeADepartement(employeManagedEntity.getId(), depManagedEntity.getId());
+		verify(emserv).affecterEmployeADepartement(employeManagedEntity.getId(),depManagedEntity.getId());
+
+	}
+		
 	
 	@Test(timeout = DEFAULT_TIMEOUT)
-		public void testaddUpdateDep() {
+		public void testaddUpdateep() {
 		
 		Departement d = new Departement("DEV");
 		String nom= "DEV";
