@@ -1,6 +1,8 @@
 package tn.esprit.spring;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
+
 import java.util.List;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
@@ -13,6 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.services.EntrepriseServiceImpl;
+import tn.esprit.spring.services.IEntrepriseService;
+
 import org.apache.logging.log4j.LogManager;
 
 @ContextConfiguration(classes = TimesheetSpringBootCoreDataJpaMvcRest1Application.class)
@@ -24,6 +28,8 @@ public class EntrepriseServiceImplTest {
 
 	@Autowired
 	EntrepriseServiceImpl emp;
+	@Autowired
+	IEntrepriseService ent;
 
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void ajouterEntrepriseTest() {
@@ -35,9 +41,19 @@ public class EntrepriseServiceImplTest {
 			l.info("In ajouterEntrepriseTest() : ");
 
 			emp.ajouterEntreprise(e);
-			emp.ajouterEntreprise(ee);
-			emp.ajouterEntreprise(eee);
+			assertNotNull(e.getId());
 			l.info("Out ajouterEntrepriseTest() without errors.");
+			ent.deleteDepartementById(e.getId());
+
+			emp.ajouterEntreprise(ee);
+			assertNotNull(e.getId());
+			l.info("Out ajouterEntrepriseTest() without errors.");
+			ent.deleteDepartementById(e.getId());
+
+			emp.ajouterEntreprise(eee);
+			assertNotNull(eee.getId());
+			l.info("Out ajouterEntrepriseTest() without errors.");
+			ent.deleteEntrepriseById(eee.getId());
 
 		}
 
@@ -57,9 +73,19 @@ public class EntrepriseServiceImplTest {
 			l.info("In ajouterDepartementTest() : ");
 
 			emp.ajouterDepartement(d);
+			assertNotNull(d.getId());
+			l.info("Out ajouterEntrepriseTest() without errors.");
+			ent.deleteDepartementById(d.getId());
+
 			emp.ajouterDepartement(dd);
+			assertNotNull(dd.getId());
+			l.info("Out ajouterEntrepriseTest() without errors.");
+			ent.deleteDepartementById(dd.getId());
+
 			emp.ajouterDepartement(ddd);
-			l.info("Out ajouterDepartementTest() without errors.");
+			assertNotNull(ddd.getId());
+			l.info("Out ajouterEntrepriseTest() without errors.");
+			ent.deleteDepartementById(ddd.getId());
 
 		}
 
@@ -70,7 +96,10 @@ public class EntrepriseServiceImplTest {
 	}
 
 	@Test(timeout = DEFAULT_TIMEOUT)
-	public void affecterDepartementEntrepriseTest() {
+	public void affecterDepartementEntrepriseTest()
+	// moock ....
+
+	{
 
 		try {
 
