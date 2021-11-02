@@ -1,50 +1,69 @@
-pipeline {
-	environment
-		{
-		registry = "roua5/Timesheet-Project"
-		registryCredential= 'dockerhub_id'
-		dockerImage = ''
-}
+pipeline { 
+
+    environment { 
+
+        registry = "YourDockerhubAccount/YourRepository" 
+
+        registryCredential = 'dockerhub_id' 
+
+        dockerImage = '' 
+
+    }
+
     agent any 
-    stages {
-	
-		stage('Cloning our Git') {
-		steps { 
-		    git 'https://github.com/elposs10/Timesheet-Project.git';
-		    }
-		}
-		
-		stage('Building our image') {
-			steps { script { dockerImage= docker.build registry + ":$BUILD_NUMBER" } }
-		}
-		stage('Deploy our image') {
-		steps { script { docker.withRegistry( '', registryCredential) { dockerImage.push() } } }
-		}
-	stage('Cleaning up') {
-		steps { bat "docker rmi $registry:$BUILD_NUMBER" }
-		}
-        stage('Checkout GIT') {
-            steps {
-                echo 'Pulling...';
-                git branch: 'roua', 
-                url:'https://github.com/elposs10/Timesheet-Project.git';
+
+    stages { 
+
+        stage('Cloning our Git') { 
+
+            steps { 
+                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+
             }
+
+        } 
+
+        stage('Building our image') { 
+
+            steps { 
+
+                script { 
+
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+
+                }
+
+            } 
+
         }
 
-        stage("Test, Build"){
-            steps{
-                bat """mvn clean install"""
+        stage('Deploy our image') { 
+
+            steps { 
+
+                script { 
+
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+
+                    }
+
+                } 
+
             }
-        }
-         stage("Sonar"){
-            steps{
-                bat """mvn sonar:sonar"""
+
+        } 
+
+        stage('Cleaning up') { 
+
+            steps { 
+
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+
             }
-        }
+
+        } 
+
     }
-    post{
-        always{
-            emailext body: 'build success' , subject: 'Jenkins' , to: 'rouambarki19@gmail.com'
-        }
-    }
+
 }
