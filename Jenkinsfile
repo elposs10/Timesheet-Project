@@ -13,18 +13,12 @@ pipeline {
                 bat """mvn clean install"""
             }
         }
-         stage("Sonar"){
-            steps{
-                bat """mvn sonar:sonar"""
-            }
-        }
+         
     }
     post{
-        succes{
+        always{
             emailext body: 'build success' , subject: 'Jenkins' , to: 'rouambarki19@gmail.com'
         }
-        failure{
-             emailext body: 'build failure' , subject: 'Jenkins' , to: 'rouambarki19@gmail.com'
-        }
+        
     }
 }
