@@ -2,9 +2,9 @@ pipeline {
 
     environment { 
 
-        registry = "YourDockerhubAccount/YourRepository" 
+        registry = "roua5/Timesheet-Project" 
 
-        registryCredential = 'dockerhub_id' 
+        registryCredential = 'dockerHub' 
 
         dockerImage = '' 
 
@@ -17,7 +17,7 @@ pipeline {
         stage('Cloning our Git') { 
 
             steps { 
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+                git 'https://github.com/elposs10/Timesheet-Project.git' 
 
             }
 
