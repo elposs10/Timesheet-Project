@@ -4,7 +4,7 @@ pipeline {
 
         registry = "roua5/Timesheet-Project" 
 
-        registryCredential = 'dockerHub' 
+        registryCredential = 'dockerhub_id' 
 
         dockerImage = '' 
 
