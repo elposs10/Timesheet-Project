@@ -20,6 +20,7 @@
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		
 	</properties>
+	
 
 	<dependencies>
 		<dependency>
@@ -54,6 +55,22 @@
       <scope>test</scope>
     </dependency>
 	</dependencies>
+	
+
+
+<distributionManagement>
+
+ 
+    <snapshotRepository>
+        <id>deploymentRepo1</id>
+        <url>http://localhost:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+</distributionManagement>
+
+
+
+
+
 
 	<build>
 		<plugins>
@@ -84,7 +101,9 @@
         </execution>
     </executions>
  </plugin>
+ 
 		</plugins>
 	</build>
+	
 
 </project>

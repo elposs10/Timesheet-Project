@@ -1,17 +1,10 @@
 package tn.esprit.spring;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-
-
-
-
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
-
 import java.util.List;
 import java.util.Optional;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
@@ -54,10 +47,6 @@ public class DeparmentServiceImplTest {
 	public void setup() {
 		MockitoAnnotations.initMocks(this);
 	}
-
-
-
-	
 	@Test
 	public void testaffectempDp() {
 		Departement depManagedEntity= new Departement();	
@@ -119,9 +108,9 @@ public class DeparmentServiceImplTest {
 			try {
 				l.info("In deleteDepartementTest() : ");
 				l.debug("Method Begin.");
-		//		assertEquals(2,departements.size()); 
+			//	assertEquals(2,departements.size()); 
 				l.debug("Method End.");
-				l.info("Out of deleteDepartementTest() without errors.");
+				l.info("Out of testFindalldep() without errors.");
 			} catch (Exception e) {
 				l.error("Error in testFindAllDep() : " + e);
 			}		
@@ -131,14 +120,14 @@ public class DeparmentServiceImplTest {
 		
 		@Test(timeout = DEFAULT_TIMEOUT)
 		public void getdepartementbyid() {
-			Optional<Departement> e = depRepo.findById(2);
+			Departement d = depRepo.findById(2).get();
 
 			
 			try {
 
-				l.info("In  getDepartementbyID()Test : ");
-				System.out.println(e);
-				l.info("Out  getDepartementbyIDTest() without errors.");
+				l.info("In  getDepartementbyID()Test : " );
+				l.info(d);
+				l.info("Out  getdepartementbyid without errors.");
 
 			}
 
