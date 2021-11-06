@@ -29,7 +29,7 @@ pipeline{
         }
          stage("Nexus"){
             steps{
-                bat "mvn clean package deploy:deploy-file -DgroupId=tn.esprit.spring -Dmaven.test.skip=true -DartifactId=Timesheet-spring-boot-core-data-jpa-mvc-REST-1 -Dversion=0.0.8-SNAPSHOT -DgeneratePom=true -Dpackaging=war -DrepositoryId=deploymentRepo1 -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/Timesheet-spring-boot-core-data-jpa-mvc-REST-1-1.0.war"
+                bat "mvn clean package deploy:deploy-file -DgroupId=tn.esprit.spring -Dmaven.test.skip=true -DartifactId=Timesheet-spring-boot-core-data-jpa-mvc-REST-1 -Dversion=0.0.1-SNAPSHOT -DgeneratePom=true -Dpackaging=war -DrepositoryId=deploymentRepo1 -Durl=http://localhost:8081/repository/maven-snapshots/ -Dfile=target/Timesheet-spring-boot-core-data-jpa-mvc-REST-1-0.0.1-SNAPSHOT.war"
             }
         }
         
