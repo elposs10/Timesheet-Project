@@ -59,10 +59,5 @@ withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')])
          
         
     }
-    post{
-        always{
-            emailext body: 'build success' , subject: 'Jenkins' , to: 'rouambarki19@gmail.com'
-        }
-        
-    }
+    
 }
