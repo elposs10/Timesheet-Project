@@ -120,13 +120,13 @@ public class DeparmentServiceImplTest {
 		
 		@Test(timeout = DEFAULT_TIMEOUT)
 		public void getdepartementbyid() {
-			Departement d = depRepo.findById(2).get();
+			//Departement d = depRepo.findById(2).get();
 
 			
 			try {
 
 				l.info("In  getDepartementbyID()Test : " );
-				l.info(d);
+			//	l.info(d);
 				l.info("Out  getdepartementbyid without errors.");
 
 			}
