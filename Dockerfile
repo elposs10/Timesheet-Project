@@ -1,4 +1,6 @@
-FROM openjdk
-COPY target/Timesheet-spring-boot-core-data-jpa-mvc-REST-1-0.0.1-SNAPSHOT.war docker-spring-boot.war
-EXPOSE 8083
-ENTRYPOINT ["java","-jar","/docker-spring-boot.war"]
+FROM openjdk:8-jre-alpine
+ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \JAVA_OPTS=""
+WORKDIR /app
+ADD target/*.jar app.jar
+EXPOSE 8082
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
