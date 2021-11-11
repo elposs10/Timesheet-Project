@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TimesheetSpringBootCoreDataJpaMvcRest1Application {
+public class TimesheetApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TimesheetSpringBootCoreDataJpaMvcRest1Application.class, args);
+		SpringApplication.run(TimesheetApplication.class, args);
 	}
 
 }
