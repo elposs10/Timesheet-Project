@@ -1,6 +1,8 @@
 package tn.esprit.spring.services;
 
 import java.util.ArrayList;
+
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -65,17 +67,6 @@ public class EmployeServiceImpl implements IEmployeService {
 			
 		}
 		
-
-		/*if(depManagedEntity.getEmployes() == null){
-
-			List<Employe> employes = new ArrayList<>();
-			employes.add(employeManagedEntity);
-			depManagedEntity.setEmployes(employes);
-		}else{
-
-			depManagedEntity.getEmployes().add(employeManagedEntity);
-
-		}*/
 
 	}
 	@Transactional

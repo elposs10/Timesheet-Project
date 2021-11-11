@@ -2,6 +2,7 @@ package tn.esprit.spring.services;
 
 import java.util.List;
 
+
 import tn.esprit.spring.entities.Mission;
 
 public interface IMissionService {
@@ -14,6 +15,6 @@ public interface IMissionService {
 
 	public long getMissionNumber();
 
-	public Mission MissionUpadate(Mission Miss);
+	public void missionUpadate(Mission miss);
 
 }

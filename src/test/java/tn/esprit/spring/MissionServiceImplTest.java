@@ -1,8 +1,8 @@
 package tn.esprit.spring;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+
+
 
 import java.util.List;
 
@@ -38,19 +38,21 @@ public class MissionServiceImplTest {
 			public void testaddMission() {
 				Mission mission = new Mission("validation","je valide");
 				underTest.ajouterMission(mission);
-			assertNotNull(mission.getId());
-			l.info("Mission ajoutee correctement ");
-			missionRepo.deleteById(mission.getId());
-			l.info("Out from addMission() without errors ");
+				assertThat(mission.getName()).contains("validation");
+				l.info("Mission ajoutee correctement ");
+				missionRepo.deleteById(mission.getId());
+				l.info("Out from addMission() without errors ");
 			}
 			
 			
 			@Test
-			public void deleteMission() {
+			public void testdeleteMission() {
 				Mission mission = new Mission("validation","je valide");
 				underTest.ajouterMission(mission);
 				l.info("Mission ajoutee correctement ");
 				underTest.deleteMission(mission.getId());
+				List<Mission> e = (List<Mission>) missionRepo.findAll();
+				assertThat(e).isEmpty();
 				l.info("Out without Errors!!");
 			}
 			
@@ -59,7 +61,8 @@ public class MissionServiceImplTest {
 			@Test
 			public void testcountMission() {
 			long empNbre = missionRepo.count();
-			assertNotNull(empNbre);
+			List<Mission> e = (List<Mission>) missionRepo.findAll();
+			assertThat(e).size().isEqualTo(0);
 			l.info("Le Nombre des Employes est :");
 			l.info(empNbre);
 			l.info("Out without Errors!!");

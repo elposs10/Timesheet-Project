@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,15 +34,17 @@ public class MissionServiceImpl implements IMissionService{
 	}
 	
 	@Override
-	public Mission MissionUpadate(Mission Miss) {
+	public void missionUpadate(Mission miss) {
 		
-		Mission existingMiss=missionRepo.findById(Miss.getId()).orElse(null);
-		
-		missionRepo.findById(Miss.getId());
-		existingMiss.setName(Miss.getName());
-		existingMiss.setDescription(Miss.getDescription());
-		
-		return missionRepo.save(existingMiss);
+		Optional<Mission> existMiss = missionRepo.findById(miss.getId());
+		if (existMiss.isPresent()) {
+			Mission m = existMiss.get();
+			m.setName(miss.getName());
+			m.setDescription(miss.getDescription());
+			missionRepo.save(m);
+		}
+			
+
 	}
 	
 	@Override
