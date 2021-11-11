@@ -1,5 +1,10 @@
 pipeline{
-
+    environment
+{
+registry = "roua5/docker-timesheet"
+registryCredential= 'dockerhub_id'
+dockerImage = ''
+}
     agent any
     
     stages {
@@ -33,37 +38,43 @@ pipeline{
             }
         }
         
-        stage('Cloning our Git') {
-            steps{
-checkout([$class: 'GitSCM', branches: [[name: '*/roua']], extensions: [], userRemoteConfigs: [[credentialsId: 'dockerhub_id', url: 'https://github.com/elposs10/Timesheet-Project.git']]])
-                
-            }
-        }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                  bat 'docker build -t roua5/docker-spring-boot:1.0.0 .'
-                }
-            }
-        }
-         stage('Deploy Docker Image') {
-            steps {
-                script {
-withCredentials([string(credentialsId: 'docker-pwd', variable: 'dockerHubPwd')]) {
-                    bat "docker login -u roua5 -p ${dockerHubPwd}"
-                 }  
-                 bat 'docker push roua5/docker-spring-boot:1.0.0'
-                }
-            }
+       stage('Building our image') {
+    steps {
+       script {
+          dockerImage= docker.build registry + ":$BUILD_NUMBER" 
+       }
+    }
+  }
+
+  stage('Deploy our image') {
+    steps {
+       script {
+         docker.withRegistry( '', registryCredential) {
+            dockerImage.push() 
          }
-         
-        
+       } 
     }
-	post{
-        always{
-            emailext body: 'build success' , subject: 'Jenkins' , to: 'rouambarki19@gmail.com'
-        }
-        
+  }
+
+  stage('Cleaning up') {
+    steps { 
+      bat "docker rmi $registry:$BUILD_NUMBER" 
     }
+  }
+    }
+
+
+       
+        
     
+    post{
+		success{
+			emailext body: 'Build success', subject: 'Jenkins', to:'rouambarki19@gmail.com'
+		}
+		failure{
+			emailext body: 'Build failure', subject: 'Jenkins', to:'rouambarki19@gmail.com'
+		}
+
+	}
+ 
 }
