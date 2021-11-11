@@ -17,19 +17,19 @@ public class ContratServiceImpl implements IContratService {
 
 	@Override
 	public void ajouterContrat(Contrat contrat) {
-		// TODO Auto-generated method stub
+		// l'ajout d'un contrat
 		contratRepository.save(contrat);
 	}
 
 	@Override
 	public void deleteContrat(int id) {
-		// TODO Auto-generated method stub
+		//delete contrat
 		contratRepository.deleteById(id);
 	}
 
 	@Override
 	public Contrat findOneById(int id) {
-		// TODO Auto-generated method stub
+		//find contrat by Id
 		Contrat c = null;
 		if (contratRepository.findById(id).isPresent())
 			c = contratRepository.findById(id).get();
@@ -38,7 +38,7 @@ public class ContratServiceImpl implements IContratService {
 
 	@Override
 	public List<Contrat> findAll() {
-		// TODO Auto-generated method stub
+		// find all contrats
 		List<Contrat> contrats = new ArrayList<>();
 		for(Contrat c : contratRepository.findAll()){
 			contrats.add(c);
@@ -48,7 +48,7 @@ public class ContratServiceImpl implements IContratService {
 
 	@Override
 	public void updateContrat(Contrat contrat) {
-		// TODO Auto-generated method stub
+		// mettre le contrat à jour
 		contratRepository.save(contrat);
 	}
 

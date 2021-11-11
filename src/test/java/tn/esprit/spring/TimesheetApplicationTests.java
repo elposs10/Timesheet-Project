@@ -49,10 +49,10 @@ class TimesheetApplicationTests {
 		assert String.valueOf(response.get("message")).equals("INSERTION_SECCES");
 		
 		}catch (JsonProcessingException e) {
-			// TODO: handle exception
+
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 	}
