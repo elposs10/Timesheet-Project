@@ -5,6 +5,7 @@ registry = "roua5/docker-timesheet"
 registryCredential= 'dockerhub_id'
 dockerImage = ''
 }
+	
     agent any
    
     stages {
