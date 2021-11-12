@@ -58,10 +58,7 @@ dockerImage = ''
 
     }
 
-
-       
-        
-    
+           
     post{
 		success{
 			emailext body: 'Build success', subject: 'Jenkins', to:'rouambarki19@gmail.com'
