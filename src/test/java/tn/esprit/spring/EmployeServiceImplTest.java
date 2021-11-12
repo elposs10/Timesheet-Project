@@ -69,6 +69,7 @@ public class EmployeServiceImplTest {
 		}
 	}
 
+	// Mockito //
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void testAddEmployeeToDepartement() {
 
@@ -77,7 +78,7 @@ public class EmployeServiceImplTest {
 			l.debug("Method Begin.");
 
 			Departement d = new Departement("DEP1");
-			depRepo.save(d);
+			assertNotNull(depRepo.save(d).getId());
 			empService.affecterEmployeADepartement(1, d.getId());
 
 			l.debug("Method End.");
@@ -129,6 +130,7 @@ public class EmployeServiceImplTest {
 
 	}
 
+	// Mockito //
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void testAddContractToEmployee() {
 		try {
@@ -199,6 +201,7 @@ public class EmployeServiceImplTest {
 			int n = empService.getNombreEmployeJPQL();
 			System.out.println(n);
 			assertNotNull(n);
+
 			l.info("Employees Number is :" + n);
 			l.debug("Method End.");
 			l.info("Out of getEmployeesNumberTest() without errors.");
@@ -334,6 +337,7 @@ public class EmployeServiceImplTest {
 			List<Employe> le = empService.getAllEmployes();
 			System.out.println(le);
 			assertThat(le).size().isGreaterThan(0);
+
 			l.info(le.size() + "> 0");
 			l.debug("Method End.");
 			l.info("Out of getAllEmployees() without errors.");
