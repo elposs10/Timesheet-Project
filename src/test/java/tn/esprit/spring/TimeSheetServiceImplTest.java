@@ -1,12 +1,7 @@
 package tn.esprit.spring;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import static org.junit.Assert.assertNotNull;
 import java.util.Date;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,9 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Mission;
-import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EmployeRepository;
 import tn.esprit.spring.repository.MissionRepository;
@@ -48,9 +41,7 @@ public class TimeSheetServiceImplTest {
 	
 	@Test
 	public void testAjouterMission() {
-		Mission mission = new Mission("validation", "je valide");
-//		  assertNull(mission.getName());  // JUnit assertion
-//		  assertThat(mission.getName()).isNull();  
+		Mission mission = new Mission("validation", "je valide");  
 		try {
 			l.info("In AjouterMission() : ");
 			l.debug("lancer ajout");
@@ -77,23 +68,7 @@ public class TimeSheetServiceImplTest {
 			l.error("Erreur dans affecterMissionADepartement() :" + e);
 		}
 	}
-//	@Test
-//	public void testAjouterTimeSheet() throws ParseException {
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//		Date dateDebut = dateFormat.parse("2021-03-10");
-//		Date dateFin = dateFormat.parse("2021-03-19");
-//		Employe emp = new Employe("Elakermi", "Tarek", "tarek@gmail.com", true, Role.ADMINISTRATEUR);
-//		assertNotNull(empRepo.save(emp).getId());
-//		try {
-//			l.info("In AjouterTimeSheet() : ");
-//			l.debug("lancer ajoutTimeSheet");
-//			timeSheetService.ajouterTimesheet(1, 1, new Date(), new Date());
-//			employerService.deleteEmployeById(1);
-//		} catch (Exception e) {
-//			l.error("Erreur dans AjouterTimeSheet() :" + e);
-//		}
-//
-//	}
+
 	
 	@Test
 	public void testfindAllMissionByEmployeJPQL() {
@@ -114,7 +89,6 @@ public class TimeSheetServiceImplTest {
 			l.info("In getAllEmployeByMission() : ");
 			l.debug("lancer methode");
 			timeSheetService.getAllEmployeByMission(mission.getId());
-			//missRepo.delete(mission);
 		} catch (Exception e) {
 			l.error("Erreur dans getAllEmployeByMission() :" + e);
 		}

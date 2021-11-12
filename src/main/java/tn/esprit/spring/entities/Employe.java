@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+@Generated
 @Entity
 public class Employe implements Serializable {
 	
@@ -30,28 +30,22 @@ public class Employe implements Serializable {
 	
 	private String nom;
 	
-	//@Column(unique=true)
 	private String email;
 
 	private boolean isActif;
 	
 	@Enumerated(EnumType.STRING)
-	//@NotNull
 	private Role role;
-	
-	//@JsonBackReference  
+	  
 	@JsonIgnore
 	@ManyToMany(mappedBy="employes",fetch=FetchType.EAGER )
-	//@NotNull
 	private List<Departement> departements;
 	
 	@JsonIgnore
-	//@JsonBackReference
 	@OneToOne(mappedBy="employe")
 	private Contrat contrat;
 	
 	@JsonIgnore
-	//@JsonBackReference
 	@OneToMany(mappedBy="employe")
 	private List<Timesheet> timesheets;
 	

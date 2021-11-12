@@ -85,28 +85,6 @@ public class EntrepriseServiceImplTest {
 
 	}
 
-	/*@Test(timeout = DEFAULT_TIMEOUT)
-	public void getAllDepartementsNamesByEntrepriseTest() {
-
-		try {
-
-			l.info("In getAllDepartementsNamesByEntrepriseTest()  : ");
-
-			List<String> s = emp.getAllDepartementsNamesByEntreprise(1);
-			System.out.println(s);
-			assertThat(s).size().isGreaterThan(0);
-
-			l.info(s.size() + "> 0");
-			l.info("Out getAllDepartementsNamesByEntrepriseTest() without errors.");
-
-		}
-
-		catch (Exception e1) {
-			l.error("Erreur dans getAllDepartementsNamesByEntrepriseTest()  : " + e1);
-		}
-
-	}*/
-
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void deleteEntrepriseByIdTest() {
 
@@ -140,24 +118,5 @@ public class EntrepriseServiceImplTest {
 		}
 
 	}
-
-//	@Test(timeout = DEFAULT_TIMEOUT)
-//	public void getEntrepriseByIdTest() {
-//
-//		try {
-//
-//			l.info("In  getEntrepriseByIdTest() : ");
-//			Entreprise e = emp.getEntrepriseById(1);
-//			System.out.println(e);
-//
-//			l.info("Out  getEntrepriseByIdTest() without errors.");
-//
-//		}
-//
-//		catch (Exception e1) {
-//			l.error("Erreur dans  getEntrepriseByIdTest(): " + e1);
-//		}
-//
-//	}
 
 }

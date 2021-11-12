@@ -11,13 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
+@Generated
 @Entity
 public class Entreprise implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3152690779535828408L;
 
 	

@@ -76,12 +76,13 @@ public class DeparmentServiceImplTest {
 		
 		@Test(timeout = DEFAULT_TIMEOUT)
 		public void testFindalldep() {
-			List<Departement> departements = (List<Departement>) depRepo.findAll();
+			
 
 			try {
 				l.info("In deleteDepartementTest() : ");
-				l.debug("Method Begin.");
-		//		assertEquals(2,departements.size()); 
+				l.debug("Method Begin."); 
+				List<Departement> departements = (List<Departement>) depRepo.findAll();
+				l.info(departements);
 				l.debug("Method End.");
 				l.info("Out of deleteDepartementTest() without errors.");
 			} catch (Exception e) {

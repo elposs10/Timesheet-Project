@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
+@Generated
 @Entity
 public class Departement implements Serializable {
 
@@ -25,7 +25,6 @@ public class Departement implements Serializable {
 	
 	private String name;
 	
-	//@JsonManagedReference 
 	@JsonIgnore
 	@ManyToMany
 	private List<Employe> employes;

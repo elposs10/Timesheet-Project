@@ -32,9 +32,7 @@ import tn.esprit.spring.services.IEmployeService;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EmployeServiceImplTest {
-	
-	
-	//hi
+
 	private static final Logger l = LogManager.getLogger(EmployeServiceImplTest.class);
 	private static final long DEFAULT_TIMEOUT = 10000;
 
@@ -71,7 +69,6 @@ public class EmployeServiceImplTest {
 		}
 	}
 
-	// Mockito //
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void testAddEmployeeToDepartement() {
 
@@ -132,7 +129,6 @@ public class EmployeServiceImplTest {
 
 	}
 
-	// Mockito //
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void testAddContractToEmployee() {
 		try {
@@ -147,37 +143,6 @@ public class EmployeServiceImplTest {
 			l.error("Error in addContractToEmployeeTest() : " + e);
 		}
 	}
-
-	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testGetEmployeeNameById() {
-		try {
-			l.info("In getEmployeeNameByIdTest() : ");
-			l.debug("Method Begin.");
-
-			String s = empService.getEmployePrenomById(1);
-			System.out.println(s);
-
-			l.debug("Method End.");
-			l.info("Out of getEmployeeNameByIdTest() without errors.");
-		} catch (Exception e) {
-			l.error("Error in getEmployeeNameByIdTest() : " + e);
-		}
-	}
-
-//	@Test(timeout = DEFAULT_TIMEOUT)
-//	public void testDeleteEmployeeById() {
-//		try {
-//			l.info("In deleteEmployeeByIdTest() : ");
-//			l.debug("Method Begin.");
-//
-//			empService.deleteEmployeById(1);
-//
-//			l.debug("Method End.");
-//			l.info("Out of deleteEmployeeByIdTest() without errors.");
-//		} catch (Exception e) {
-//			l.error("Error in deleteEmployeeByIdTest() : " + e);
-//		}
-//	}
 
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void testDeleteContractById() {

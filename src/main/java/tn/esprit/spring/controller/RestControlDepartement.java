@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Departement;
+import tn.esprit.spring.entities.Generated;
 import tn.esprit.spring.services.IDepartementService;
 
-
+@Generated
 @RestController
 public class RestControlDepartement {
 	

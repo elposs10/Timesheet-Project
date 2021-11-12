@@ -69,15 +69,16 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
-		Departement dep = deptRepoistory.findById(depId).get();
+		
 		Optional<Departement> depManagedEntity = deptRepoistory.findById(depId);
 
 		if(depManagedEntity.isPresent()) {
+			Departement dep = depManagedEntity.get();
 			int employeNb = dep.getEmployes().size();
 			for(int index = 0; index < employeNb; index++){
 				if(dep.getEmployes().get(index).getId() == employeId){
 					dep.getEmployes().remove(index);
-					break;//a revoir
+					break;
 			}
 		}
 		}
@@ -101,29 +102,7 @@ public class EmployeServiceImpl implements IEmployeService {
 		}
 		
 	}
-
-	public String getEmployePrenomById(int employeId) {
-		Optional<Employe> employeManagedEntity = employeRepository.findById(employeId);
-		if(employeManagedEntity.isPresent()){
-			employeManagedEntity.get();
-		}
-		return employeManagedEntity.get().getPrenom();
-	}
-	/*public void deleteEmployeById(int employeId)
-	{
-		Optional<Employe> employe = employeRepository.findById(employeId);
-		if(employe.isPresent()) {
-			//Desaffecter l'employe de tous les departements
-		//c'est le bout master qui permet de mettre a jour
-		//la table d'association
-		for(Departement dep : employe.getDepartements()){
-			dep.getEmployes().remove(employe);
-		}
-
-		employeRepository.delete(employe);
-		}
-		
-	}*/
+	
 
 	public void deleteContratById(int contratId) {
 		Optional<Contrat> contratManagedEntity = contratRepoistory.findById(contratId);
