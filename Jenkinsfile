@@ -28,6 +28,11 @@ pipeline {
                 bat """mvn package -Dmaven.test.skip=true"""
             }
         }
+        stage ("Analysing project with Sonar for better code quality"){
+			steps{
+				bat """mvn sonar:sonar"""
+			}
+		}
     }
     post {
         success {
