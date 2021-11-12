@@ -87,7 +87,7 @@ public class EntrepriseServiceImplTest {
 
 	}
 
-	@Test(timeout = DEFAULT_TIMEOUT)
+	/*@Test(timeout = DEFAULT_TIMEOUT)
 	public void getAllDepartementsNamesByEntrepriseTest() {
 
 		try {
@@ -107,7 +107,7 @@ public class EntrepriseServiceImplTest {
 			l.error("Erreur dans getAllDepartementsNamesByEntrepriseTest()  : " + e1);
 		}
 
-	}
+	}*/
 
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void deleteEntrepriseByIdTest() {
