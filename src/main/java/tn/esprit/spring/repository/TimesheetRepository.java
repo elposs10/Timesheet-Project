@@ -8,10 +8,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.entities.Employe;
+import tn.esprit.spring.entities.Generated;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Timesheet;
 import tn.esprit.spring.entities.TimesheetPK;
 
+@Generated
 public interface TimesheetRepository extends CrudRepository<Timesheet, Integer> {
 
 	@Query("select DISTINCT m from Mission m join m.timesheets t join t.employe e where e.id=:employeId")

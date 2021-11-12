@@ -72,14 +72,17 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Transactional
 	public void desaffecterEmployeDuDepartement(int employeId, int depId)
 	{
-		Departement dep = deptRepoistory.findById(depId).get();
+		Optional<Departement> depManagedEntity = deptRepoistory.findById(depId);
 
-		int employeNb = dep.getEmployes().size();
-		for(int index = 0; index < employeNb; index++){
-			if(dep.getEmployes().get(index).getId() == employeId){
-				dep.getEmployes().remove(index);
-				break;//a revoir
+		if(depManagedEntity.isPresent()) {
+			Departement dep = depManagedEntity.get();
+			int employeNb = dep.getEmployes().size();
+			for(int index = 0; index < employeNb; index++){
+				if(dep.getEmployes().get(index).getId() == employeId){
+					dep.getEmployes().remove(index);
+					break;
 			}
+		}
 		}
 	}
 
@@ -89,35 +92,26 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {
-		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-
-		contratManagedEntity.setEmploye(employeManagedEntity);
-		contratRepoistory.save(contratManagedEntity);
+		Optional<Contrat> contratManagedEntity = contratRepoistory.findById(contratId);
+		Optional<Employe> employeManagedEntity = employeRepository.findById(employeId);
+		if(contratManagedEntity.isPresent()) {
+			Contrat c = contratManagedEntity.get();
+			if(employeManagedEntity.isPresent()) {
+				Employe emp = employeManagedEntity.get();
+				emp.setContrat(c);
+				c.setEmploye(emp);
+			}
+		}
 		
 	}
 
-	public String getEmployePrenomById(int employeId) {
-		Employe employeManagedEntity = employeRepository.findById(employeId).get();
-		return employeManagedEntity.getPrenom();
-	}
-	public void deleteEmployeById(int employeId)
-	{
-		Employe employe = employeRepository.findById(employeId).get();
-
-		//Desaffecter l'employe de tous les departements
-		//c'est le bout master qui permet de mettre a jour
-		//la table d'association
-		for(Departement dep : employe.getDepartements()){
-			dep.getEmployes().remove(employe);
-		}
-
-		employeRepository.delete(employe);
-	}
+	
 
 	public void deleteContratById(int contratId) {
-		Contrat contratManagedEntity = contratRepoistory.findById(contratId).get();
-		contratRepoistory.delete(contratManagedEntity);
+		Optional<Contrat> contratManagedEntity = contratRepoistory.findById(contratId);
+		if(contratManagedEntity.isPresent()) {
+			contratRepoistory.delete(contratManagedEntity.get());
+		}
 
 	}
 

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Generated
 @Entity
 public class Timesheet implements Serializable{
 

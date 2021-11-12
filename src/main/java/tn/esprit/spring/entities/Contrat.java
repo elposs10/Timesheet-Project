@@ -11,6 +11,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
+@Generated
 @Entity
 public class Contrat implements Serializable {
 	

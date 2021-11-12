@@ -2,6 +2,7 @@ package tn.esprit.spring.controller;
 
 import java.util.Date;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Entreprise;
+import tn.esprit.spring.entities.Generated;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Timesheet;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 import tn.esprit.spring.services.ITimesheetService;
 
+@Generated
 @RestController
 public class RestControlEmploye {
 
@@ -81,22 +83,7 @@ public class RestControlEmploye {
 		iemployeservice.affecterContratAEmploye(contratId, employeId);
 	}
 
-	
-   
-   // URL : http://localhost:8081/SpringMVC/servlet/getEmployePrenomById/2
-   @GetMapping(value = "getEmployePrenomById/{idemp}")
-   @ResponseBody
-   public String getEmployePrenomById(@PathVariable("idemp")int employeId) {
-		return iemployeservice.getEmployePrenomById(employeId);
-	}
 
-    // URL : http://localhost:8081/SpringMVC/servlet/deleteEmployeById/1
-    @DeleteMapping("/deleteEmployeById/{idemp}") 
-	@ResponseBody 
-	public void deleteEmployeById(@PathVariable("idemp")int employeId) {
-		iemployeservice.deleteEmployeById(employeId);
-		
-	}
     
  // URL : http://localhost:8081/SpringMVC/servlet/deleteContratById/2
     @DeleteMapping("/deleteContratById/{idcontrat}") 
@@ -122,13 +109,7 @@ public class RestControlEmploye {
 		return iemployeservice.getAllEmployeNamesJPQL();
 	}
 
-    // URL : http://localhost:8081/SpringMVC/servlet/getAllEmployeByEntreprise/1
-    @GetMapping(value = "getAllEmployeByEntreprise/{identreprise}")
-    @ResponseBody
-	public List<Employe> getAllEmployeByEntreprise(@PathVariable("identreprise") int identreprise) {
-    	Entreprise entreprise=ientrepriseservice.getEntrepriseById(identreprise);
-		return iemployeservice.getAllEmployeByEntreprise(entreprise);
-	}
+
 
  // Modifier email : http://localhost:8081/SpringMVC/servlet/mettreAjourEmailByEmployeIdJPQL/2/newemail
  	@PutMapping(value = "/mettreAjourEmailByEmployeIdJPQL/{id}/{newemail}") 

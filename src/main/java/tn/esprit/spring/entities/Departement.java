@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
-
+@Generated
 @Entity
 public class Departement implements Serializable {
 
