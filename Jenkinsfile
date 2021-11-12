@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'Pulling...';
                 git branch: 'oussema',
-                url: 'https://github.com/elposs10/DevOps-TimesheetProject.git';
+                url: 'https://github.com/elposs10/Timesheet-Project.git';
             }
         }
         stage ("Checking Maven Version"){
