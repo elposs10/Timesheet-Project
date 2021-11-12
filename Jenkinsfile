@@ -28,6 +28,11 @@ pipeline {
                 bat """mvn package -Dmaven.test.skip=true"""
             }
         }
+        stage ("Checking Test Coverage with JaCoCo"){
+			steps{
+				bat """mvn verify"""
+			}
+		}
         stage ("Analysing project with Sonar for better code quality"){
 			steps{
 				bat """mvn sonar:sonar"""
