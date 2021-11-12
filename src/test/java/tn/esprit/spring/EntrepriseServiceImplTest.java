@@ -1,7 +1,5 @@
 package tn.esprit.spring;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import java.util.List;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -143,23 +141,23 @@ public class EntrepriseServiceImplTest {
 
 	}
 
-	@Test(timeout = DEFAULT_TIMEOUT)
-	public void getEntrepriseByIdTest() {
-
-		try {
-
-			l.info("In  getEntrepriseByIdTest() : ");
-			Entreprise e = emp.getEntrepriseById(1);
-			System.out.println(e);
-
-			l.info("Out  getEntrepriseByIdTest() without errors.");
-
-		}
-
-		catch (Exception e1) {
-			l.error("Erreur dans  getEntrepriseByIdTest(): " + e1);
-		}
-
-	}
+//	@Test(timeout = DEFAULT_TIMEOUT)
+//	public void getEntrepriseByIdTest() {
+//
+//		try {
+//
+//			l.info("In  getEntrepriseByIdTest() : ");
+//			Entreprise e = emp.getEntrepriseById(1);
+//			System.out.println(e);
+//
+//			l.info("Out  getEntrepriseByIdTest() without errors.");
+//
+//		}
+//
+//		catch (Exception e1) {
+//			l.error("Erreur dans  getEntrepriseByIdTest(): " + e1);
+//		}
+//
+//	}
 
 }

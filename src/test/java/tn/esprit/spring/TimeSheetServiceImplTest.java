@@ -77,23 +77,23 @@ public class TimeSheetServiceImplTest {
 			l.error("Erreur dans affecterMissionADepartement() :" + e);
 		}
 	}
-	@Test
-	public void testAjouterTimeSheet() throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		Date dateDebut = dateFormat.parse("2021-03-10");
-		Date dateFin = dateFormat.parse("2021-03-19");
-		Employe emp = new Employe("Elakermi", "Tarek", "tarek@gmail.com", true, Role.ADMINISTRATEUR);
-		assertNotNull(empRepo.save(emp).getId());
-		try {
-			l.info("In AjouterTimeSheet() : ");
-			l.debug("lancer ajoutTimeSheet");
-			timeSheetService.ajouterTimesheet(1, 1, new Date(), new Date());
-			employerService.deleteEmployeById(1);
-		} catch (Exception e) {
-			l.error("Erreur dans AjouterTimeSheet() :" + e);
-		}
-
-	}
+//	@Test
+//	public void testAjouterTimeSheet() throws ParseException {
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//		Date dateDebut = dateFormat.parse("2021-03-10");
+//		Date dateFin = dateFormat.parse("2021-03-19");
+//		Employe emp = new Employe("Elakermi", "Tarek", "tarek@gmail.com", true, Role.ADMINISTRATEUR);
+//		assertNotNull(empRepo.save(emp).getId());
+//		try {
+//			l.info("In AjouterTimeSheet() : ");
+//			l.debug("lancer ajoutTimeSheet");
+//			timeSheetService.ajouterTimesheet(1, 1, new Date(), new Date());
+//			employerService.deleteEmployeById(1);
+//		} catch (Exception e) {
+//			l.error("Erreur dans AjouterTimeSheet() :" + e);
+//		}
+//
+//	}
 	
 	@Test
 	public void testfindAllMissionByEmployeJPQL() {

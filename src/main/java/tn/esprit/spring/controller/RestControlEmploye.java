@@ -4,22 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Employe;
-import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Mission;
 import tn.esprit.spring.entities.Timesheet;
 import tn.esprit.spring.services.IEmployeService;
@@ -39,7 +34,6 @@ public class RestControlEmploye {
 
 	
 	// http://localhost:8081/SpringMVC/servlet/ajouterEmployer
-	//{"id":1,"nom":"kallel", "prenom":"khaled", "email":"Khaled.kallel@ssiiconsulting.tn", "isActif":true, "role":"INGENIEUR"}
 	
 	@PostMapping("/ajouterEmployer")
 	@ResponseBody
@@ -71,7 +65,7 @@ public class RestControlEmploye {
 	}
 
 	// http://localhost:8081/SpringMVC/servlet/ajouterContrat
-	//{"reference":6,"dateDebut":"2020-03-01","salaire":2000,"typeContrat":"CDD"}
+	
 	@PostMapping("/ajouterContrat")
 	@ResponseBody
 	public int ajouterContrat(@RequestBody Contrat contrat) {
@@ -96,12 +90,12 @@ public class RestControlEmploye {
 	}
 
     // URL : http://localhost:8081/SpringMVC/servlet/deleteEmployeById/1
-    @DeleteMapping("/deleteEmployeById/{idemp}") 
-	@ResponseBody 
-	public void deleteEmployeById(@PathVariable("idemp")int employeId) {
-		iemployeservice.deleteEmployeById(employeId);
-		
-	}
+//    @DeleteMapping("/deleteEmployeById/{idemp}") 
+//	@ResponseBody 
+//	public void deleteEmployeById(@PathVariable("idemp")int employeId) {
+//		iemployeservice.deleteEmployeById(employeId);
+//		
+//	}
     
  // URL : http://localhost:8081/SpringMVC/servlet/deleteContratById/2
     @DeleteMapping("/deleteContratById/{idcontrat}") 
@@ -128,12 +122,12 @@ public class RestControlEmploye {
 	}
 
     // URL : http://localhost:8081/SpringMVC/servlet/getAllEmployeByEntreprise/1
-    @GetMapping(value = "getAllEmployeByEntreprise/{identreprise}")
-    @ResponseBody
-	public List<Employe> getAllEmployeByEntreprise(@PathVariable("identreprise") int identreprise) {
-    	Entreprise entreprise=ientrepriseservice.getEntrepriseById(identreprise);
-		return iemployeservice.getAllEmployeByEntreprise(entreprise);
-	}
+//    @GetMapping(value = "getAllEmployeByEntreprise/{identreprise}")
+//    @ResponseBody
+//	public List<Employe> getAllEmployeByEntreprise(@PathVariable("identreprise") int identreprise) {
+//    	Entreprise entreprise=ientrepriseservice.getEntrepriseById(identreprise);
+//		return iemployeservice.getAllEmployeByEntreprise(entreprise);
+//	}
 
  // Modifier email : http://localhost:8081/SpringMVC/servlet/mettreAjourEmailByEmployeIdJPQL/2/newemail
  	@PutMapping(value = "/mettreAjourEmailByEmployeIdJPQL/{id}/{newemail}") 
@@ -166,7 +160,7 @@ public class RestControlEmploye {
 	}
 
 	
-	//TODO
+	
 	public List<Timesheet> getTimesheetsByMissionAndDate(Employe employe, Mission mission, Date dateDebut,
 			Date dateFin) {
 		return iemployeservice.getTimesheetsByMissionAndDate(employe, mission, dateDebut, dateFin);

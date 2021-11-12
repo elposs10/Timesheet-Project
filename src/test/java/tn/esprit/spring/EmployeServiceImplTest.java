@@ -164,20 +164,20 @@ public class EmployeServiceImplTest {
 		}
 	}
 
-	@Test(timeout = DEFAULT_TIMEOUT)
-	public void testDeleteEmployeeById() {
-		try {
-			l.info("In deleteEmployeeByIdTest() : ");
-			l.debug("Method Begin.");
-
-			empService.deleteEmployeById(1);
-
-			l.debug("Method End.");
-			l.info("Out of deleteEmployeeByIdTest() without errors.");
-		} catch (Exception e) {
-			l.error("Error in deleteEmployeeByIdTest() : " + e);
-		}
-	}
+//	@Test(timeout = DEFAULT_TIMEOUT)
+//	public void testDeleteEmployeeById() {
+//		try {
+//			l.info("In deleteEmployeeByIdTest() : ");
+//			l.debug("Method Begin.");
+//
+//			empService.deleteEmployeById(1);
+//
+//			l.debug("Method End.");
+//			l.info("Out of deleteEmployeeByIdTest() without errors.");
+//		} catch (Exception e) {
+//			l.error("Error in deleteEmployeeByIdTest() : " + e);
+//		}
+//	}
 
 	@Test(timeout = DEFAULT_TIMEOUT)
 	public void testDeleteContractById() {
