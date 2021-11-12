@@ -6,9 +6,7 @@ registryCredential= 'dockerhub_id'
 dockerImage = ''
 }
     agent any
-    
-	
-	
+   
     stages {
         stage('Checkout GIT') {
             steps {
